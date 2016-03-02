@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load catalog_tags %}
+{% load catalog_filters %}
+{% block extra_title %}{{ page_title }}{% endblock %}
+
+{% block body_content %}
+	<!-- START PRIMARY SECTION -->
+	<div id="primary" class="inner group" />
+	<div class="layout-sidebar-left group">
+	   <div id="container">
+	      <div id="content" role="main">
+	         <div id="breadcrumb"><a class="home" href="home.html">Home</a>  &rsaquo; <a href="shop.html">Shop</a></div>
+	         {% if p in products %}
+	         <h1 class="page-title">All Products</h1>
+	         {% else %}
+	         <h1 class="page-title">No Products</h1>
+	         {% endif %}
+	         <h2></h2>
+	         <ul class="products">
+	         {% for p in products %}
+	         {% if  forloop.count > 1 and forloop.first %}
+	            <li class="product border shadow first">
+	         {% endif %}
+	         {% if forloop.last %}
+	         	<li class="product border shadow last">
+	         {% else %}
+	         	<li class="product border shadow ">
+	         {% endif %}
+	               <a href="{{ p.get_absolute_url }}">
+	                  {% include 'tags/product_thumbnail.html' %}
+	                  <span class="price">{{ p.name }} {{ p.price|currency }}</span>		
+	               </a>
+	               <div class="buttons">
+	                  <a href="{{ p.get_absolute_url }}" class="details">DETAILS</a>&nbsp;
+	                  <form action="." class="cart" method="post">
+					      {{ form.as_p }} {% csrf_token %}
+					      <button type="submit" class="button-alt">Add to cart</button>		
+					   </form>
+	               </div>
+	            </li>
+	           {% endfor %}
+	         </ul>
+	         <div class="clear"></div>
+	      </div>
+	   </div>
+	   <div id="sidebar" class="shop group">
+	      <div id="product_categories-3" class="widget-1 widget-first widget widget_product_categories">
+	         {% category_list request.path %}
+	      </div>
+	      <div id="product_categories-3" class="widget-1 widget-first widget widget_product_categories">
+	         <h4>Brands</h4>
+	         <ul lass="sub-menu">
+	         	{% for p in products %}
+				<li >
+					<a class="btn btn-link" href=''>{{ p.brand }}</a>
+				</li>
+				{% endfor %}
+			<ul>
+	      </div>
+	      <div id="text-image-3" class="widget-2 widget-last widget text-image">
+	         <div class="text-image" style="text-align:left"><img src="images/free.jpg" alt="" /></div>
+	      </div>
+	   </div>
+	</div>
+	<!-- END PRIMARY SECTION -->
+{% endblock %}

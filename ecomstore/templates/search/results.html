@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load search_tags %}
+{% block extra_title %}{{ page_title }}{% endblock %}
+
+{% block body_content %}
+	<h1>Search Results for: '{{ q }}'</h1>
+	{% for p in results %}
+		<a href="{{ p.get_absolute_url }}">
+          {% include 'tags/product_thumbnail.html' %}
+          <span class="price">{{ p.name }} &#36;250.00</span>		
+	    </a>
+	{% empty %}
+	No products were found matching those search terms.
+	{% endfor %}
+<div class="cb">&nbsp;</div>
+{% pagination_links request paginator %}
+{% endblock %}

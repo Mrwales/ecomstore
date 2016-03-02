@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+    
+{% block extra_title %}{{ page_title }}{% endblock %}
+
+{% block body_content %}
+<div class="slider-mobile">
+   <!-- START SLIDER -->
+   <div id="slider" class="group mobile inner fixed-image">
+      <img src="images/slider/001.jpg" width="960" height="338" alt="" />  
+   </div>
+   <!-- END SLIDER -->     
+</div>
+
+<!-- START PRIMARY SECTION -->
+<div id="primary" class="inner group" />
+<div class="layout-sidebar-right group">
+   <!-- START CONTENT -->
+   <div id="content" role="main" class="group">
+      <h2>Login</h2>
+      <div id="post-18" class="post-18 page type-page status-publish hentry group">
+    	{% if form.errors %}
+			<ul class="errorlist">
+				<li>You entered an invalid username or password.</li>
+			</ul>
+			<br />
+	   	{% endif %}
+         <form action="{% url 'django.contrib.auth.views.login' %}" method="post">{% csrf_token %}
+            <p class="form-row form-row-first">
+            	{{ form.username.label_tag }}
+            	{{ form.username }}
+            </p>
+            <p class="form-row form-row-last">
+               	{{ form.password.label_tag }}</td>
+				{{ form.password }}
+            </p>
+            <div class="clear"></div>
+            <input type="hidden" id="_n" name="_n" value="f5432e5570" />
+            <input type="hidden" name="next" value="{{ next }}"
+            <p><input type="submit" class="button"  value="Login" /></p>
+         </form>
+      </div>
+   </div>
+   <!-- END CONTENT -->
+   <!-- START SIDEBAR -->
+   <div id="sidebar" class="group">
+      <div id="featured-products-3" class="widget-1 widget-first widget widget_featured_products">
+         <h3>Must Haves</h3>
+         <ul class="product_list_widget">
+            <li><a href="product_single.html" title="Interior Black">
+            <img width="36" height="36" src="images/common/interior-36x36.jpg" class="attachment-shop_tiny wp-post-image" alt="interior" title="interior" />
+            <span class="js_widget_product_title">Interior Black</span></a><span class="js_widget_product_price">&#36;60,000.00</span></li>
+            <li><a href="product_single.html" title="Wood design">
+            <img width="36" height="36" src="images/common/wood-36x36.jpg" class="attachment-shop_tiny wp-post-image" alt="wood" title="wood" />
+            <span class="js_widget_product_title">Wood design</span></a><span class="js_widget_product_price"><del>&#36;340.00</del> <ins>&#36;340.00</ins></span></li>
+            <li><a href="product_single.html" title="Hot Room">
+            <img width="36" height="36" src="images/common/warmroom-36x36.jpg" class="attachment-shop_tiny wp-post-image" alt="warmroom" title="warmroom" />
+            <span class="js_widget_product_title">Hot Room</span></a><span class="js_widget_product_price">&#36;730.00</span></li>
+         </ul>
+      </div>
+      <div id="testimonial-widget-3" class="widget-2 widget-last widget testimonial-widget">
+         <h3>Testimonials</h3>
+         <div class="testimonial-text">
+            <ul>
+               <li>
+                  <blockquote>
+                     <p>Quisque vel ipsum nec magna aliquet molestie in quis ipsum. Sed nisl est, hendrerit in laoreet facilisis, placerat eget tortor. Nunc ipsum eros, sagittis quis dignissim sed, imperdiet vitae sem. Praesent et ultricies tellus. Etiam ornare dolor sagittis quis dignissim sed, imperdiet vitae sem. Praesent et ultricies tellus.</p>
+                     <a class="name-testimonial" href="testimonials.html">[Joy Mèrgot ]</a>
+                  </blockquote>
+               </li>
+               </li>
+            </ul>
+            <div class="pagination p-testimonial"></div>
+         </div>
+         <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('.testimonial-widget ul').cycle({
+                    fx:'fade',
+                    
+                    timeout:8000,
+                    speed:300, 
+            	    pager:'.p-testimonial'
+                });
+            });
+         </script>
+      </div>
+   </div>
+   <!-- END SIDEBAR -->    
+</div>
+<!-- START EXTRA CONTENT -->
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html"%}
+{% load catalog_tags %}
+    {% block extra_title %}{{ page_title }}{% endblock %}
+    {% block body_content %}
+    
+
+    <div id="slider" class="group inner">
+        <ul class="group">
+            <li class="first slide-1 group image-content-type">
+                <div class="slider-featured group"><a href="http://www.google.it"><img src="{{ MEDIA_URL }}css.css" width="960" height="338" alt="interior design" /></a></div>
+                <div class="slider-caption caption-right">
+                    <!-- TITLE -->
+                    <h2><a href="http://www.google.it">interior design</a></h2>
+                    <!-- TEXT -->
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar turpis velit. Morbi rutrum, neque non pulvinar faucibus, ligula eros viverra ligula, et aliquam libero neque ac nisl. </p>
+                    <p><span class="special-font" style="font-size:24px;">prices from <span style="font-size:42px;">$45</span></span></p>
+                </div>
+            </li>
+            <li class="slide-2 group image-content-type">
+                <div class="slider-featured group"><img src="images/common/0035.jpg" width="960" height="338" alt="Luxury gold" /></div>
+                <div class="slider-caption caption-right">
+                    <!-- TITLE -->
+                    <h2>Luxury gold</h2>
+                    <!-- TEXT -->
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar turpis velit. Morbi rutrum, neque non pulvinar faucibus, ligula eros viverra ligula, et aliquam libero neque ac nisl. </p>
+                </div>
+            </li>
+            <li class="last slide-3 group image-content-type">
+                <div class="slider-featured group"><img src="images/common/0031.jpg" width="960" height="338" alt="Gold Parquet" /></div>
+                <div class="slider-caption caption-right">
+                    <!-- TITLE -->
+                    <h2>Gold Parquet</h2>
+                    <!-- TEXT -->
+                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum</p>
+                    <p><span class="special-font" style="font-size:24px;">prices from <span style="font-size:42px;">$37</span></span></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- END SLIDER -->            
+    <div class="slider-mobile">
+        <!-- START SLIDER -->
+        <div id="slider" class="group mobile inner fixed-image">
+            <img src="images/common/001.jpg" width="960" height="338" alt="" />  
+        </div>
+        <!-- END SLIDER -->
+        <script type="text/javascript">      
+            var 	yiw_slider_type = 'elegant',
+                    yiw_slider_elegant_easing = null,
+        		    yiw_slider_elegant_fx = 'fade',
+        		    yiw_slider_elegant_speed = 500,
+        		    yiw_slider_elegant_timeout = 5000,
+        		    yiw_slider_elegant_caption_speed = 500;
+        </script>
+     
+    </div>
+    <!-- START PRIMARY SECTION -->
+    <div id="primary" class="inner group">
+        <div id="slogan" class="inner">
+            <h1>Welcome to Sommerce, a nice and  fresh perspective to your e-commerce site</h1>
+            <h3>unlimited layout styles by changing fonts, colors, backgrounds, images and sliders</h3>
+        </div>
+        <div class="layout-sidebar-no">
+            <!-- START CONTENT -->
+            <div id="content" role="main" class="group wrapper-content">
+                <div id="post-7" class="post-7 page type-page status-publish hentry group">
+                    <div class="boxed-content group">
+                        {% product_list recently_viewed 'Your Recently Viewed' %}
+                    </div>
+                    <div class="boxed-content group">
+                        {% product_list view_recs 'Similar Products' %}
+                    </div>
+                    <div class="boxed-content group">
+                        {% product_list featured 'Featured Products' %}
+                    </div>
+                    <div class="boxed-content group">
+                        {% product_list search_recs 'Recommended For You' %}
+                    </div>
+
+
+                    <div class="call-to-action-two group">
+                        <div class="incipit">
+                            <p class="special-font">
+                                <span style="font-size:52px;"><strong>35% </strong></span> <span style="font-size:48px;">off everything </span>  Sign in to our list before march 21 to enjoy our special sales!<br />
+                            </p>
+                        </div>
+                        <a href="#" class="call-button">
+                        SIGN IN NOW		
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- START EXTRA CONTENT -->
+        <!-- END EXTRA CONTENT -->    
+    </div>
+    <!-- END PRIMARY SECTION -->
+    {% endblock %}
+        

@@ -1,0 +1,13 @@
+{% load catalog_tags %}
+{% load catalog_filters %}
+{% with cart_item_count as cart_count %}
+	<a class="trigger" href="{% url 'show_cart' %}">Shopping Cart
+		<br />
+	    <span> {{ cart_count }} item{{ cart_count|pluralize }} {{ cart_subtotal|currency }} </span>
+    </a> |<!--  <div class="basketpopup">
+        <h3>My Cart</h3>
+        <span class="empty">No products in the cart.</span>
+    </div> -->
+{% endwith %}
+                                       
+                                        

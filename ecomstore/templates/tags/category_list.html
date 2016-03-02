@@ -1,0 +1,16 @@
+<h3>Categories</h3>
+	<ul lass="sub-menu">
+	{% with active_categories as cats %}
+		{% for c in cats %}
+			{% ifequal c.get_absolute_url request_path %}
+			<li class="disabled">
+				{{ c.name }} <br/>
+			{% else %}
+			<li >
+				<a  class="btn btn-link" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+			{% endifequal %}
+			</li>
+		{% endfor %}
+	{% endwith %}
+	<ul>
+                                                        

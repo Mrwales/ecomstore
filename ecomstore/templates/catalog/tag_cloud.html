@@ -1,0 +1,11 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% load tagging_tags %}
+    {% block extra_title %}{{ page_title }}{% endblock %}
+    {% block body_content %}
+    	<h1>Product Tag Cloud</h1>
+			{% for tag in product_tags %}
+				<a href="/tag/{{ tag.name }}/" style="font-size:
+				{{ tag.font_size|add:"11" }}px;">{{ tag.name|slugify }}</a>&nbsp;
+			{% endfor %}
+	{% endblock %}

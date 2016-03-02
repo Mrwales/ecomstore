@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block extra_title %}{{ page_title }}{% endblock %}
+
+{% block body_content %}
+<div class="slider-mobile">
+   <!-- START SLIDER -->
+   <div id="slider" class="group mobile inner fixed-image">
+      <img src="images/slider/001.jpg" width="960" height="338" alt="" />  
+   </div>
+   <!-- END SLIDER -->     
+</div>
+<!-- START PRIMARY SECTION -->
+<div id="primary" class="inner group" />
+<div class="layout-sidebar-right group">
+   <!-- START CONTENT -->
+   <div id="content" role="main" class="group">
+      <div id="crumbs" class="theme_breadcumb">
+         <a class="home" href="home.html">Home Page</a>  &rsaquo;  <a class="no-link current" href="#">My Account</a>
+         <div class="breadcrumb-end"></div>
+      </div>
+      <h2>My Account</h2>
+      <div id="post-15" class="post-15 page type-page status-publish hentry group">
+         <p>Welcome, <strong>{{ name|capfirst }}!</strong>. From your account dashboard you can view your recent orders, manage your shipping and billing addresses and <a href="{% url 'django.contrib.auth.views.password_change' %}">Change
+Password</a></p>
+         <br /><br />
+         <fieldset class="my_account">
+            <legend>Recent Orders</legend>
+         <table class="shop_table my_account_orders">
+            <thead>
+               <tr>
+                  <th><span class="nobr">#</span></th>
+                  <th><span class="nobr">Date</span></th>
+                  <th><span class="nobr">Ship to</span></th>
+                  <th><span class="nobr">Total</span></th>
+                  <th colspan="2"><span class="nobr">Status</span></th>
+               </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+                <tr>
+                  <td><a href="{{ order.get_absolute_url }}"></td>
+                  <td>Order #{{ order.id }}</td>
+                  <td>{{ order.date|date }}</a>
+                  </td>
+                </tr>
+                <br />
+              {% empty %}
+                You have no past orders.
+              {% endfor %}
+            </tbody>
+         </table>
+         <h2>My Addresses</h2>
+         <p>The following addresses will be used on the checkout page by default.</p>
+         <div class="col2-set addresses">
+            <div class="col-1">
+               <header class="title">
+                  <h3>Billing Address</h3>
+                  <a href="{% url 'order_info' %}" class="edit">Edit Billing/Shipping Information</a>
+               </header>
+               <address>
+                  You have not set up a billing address yet.				
+               </address>
+            </div>
+            <!-- /.col-1 -->
+            <!-- <div class="col-2">
+               <header class="title">
+                  <h3>Shipping Address</h3>
+                  <a href="edit-address.html" class="edit">Edit</a>
+               </header>
+               <address>
+                  You have not set up a shipping address yet.				
+               </address>
+            </div> -->
+            <!-- /.col-2 -->
+         </div>
+         <!-- /.col2-set -->
+      </div>
+      <div id="comments">
+         <!--<p class="nocomments">&nbsp;</p>-->
+      </div>
+      <!-- #comments -->
+   </div>
+   <!-- END CONTENT -->
+  {% endblock %}

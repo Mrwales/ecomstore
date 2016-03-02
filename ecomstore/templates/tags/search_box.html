@@ -1,0 +1,5 @@
+<form id="search" action="{% url 'search_results' %}" method="get">
+<label style="display: block;" class="screen-reader-text" for="s">search</label>
+{{ form.q }}
+<input id="searchsubmit" value=">" type="submit">  
+</form>

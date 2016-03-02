@@ -1,0 +1,31 @@
+{% load catalog_tags %}
+{% load catalog_filters %}
+
+
+{% if forloop.last %}
+<li class="product border shadow last last-row">
+{% else %}
+<li class="product border shadow last-row">
+{% endif %}
+  <a href="product_single.html">
+      <div class="thumbnail">
+          <img src="{{p.thumbnail.thumb_url}}" class="attachment-shop_small wp-post-image" alt="{{ p.name }}" title="{{ p.name }}" height="150" width="150"> 
+          <div class="thumb-shadow"></div>
+          <strong class="below-thumb">{{ p.name }}</strong>
+      </div>
+      <span class="price">{{ p.price|currency }}</span>		
+  </a>
+  <div class="buttons">
+      <a href="{{ p.get_absolute_url }}" class="details">DETAILS</a>
+  </div>
+</li>
+
+
+                                    <!-- <a href="product_single.html">
+                                        {% include 'tags/product_thumbnail.html' %}
+                                        <span class="price">&#36;250.00</span>    
+                                    </a>
+                                    <div class="buttons">
+                                        <a href="product_single.html" class="details">DETAILS</a>&nbsp;<a href="#" class="add-to-cart">ADD TO CART</a>
+                                    </div> -->
+                               

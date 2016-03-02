@@ -1,0 +1,24 @@
+<div class="boxed-content group">
+	<div class="box-title group">
+	{% for p in products %}
+		{% if forloop.first %}
+	    <h3>{{ header_text }}</h3>
+	    <p>...extra comments...</p>
+	</div>
+		{% endif %}
+	{% endfor %}
+	<div class="box-content group">
+    	<ul class="products">
+    	{% for p in products %}
+        	{% include 'tags/product_thumbnail2.html' %}
+        {% endfor %}
+        </ul>
+	</div>
+
+	
+</div>
+
+
+                        
+                        
+                    

@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block extra_title %}{{ page_title }}{% endblock %}
+    {% block body_content %}
+    	<h1>Products tagged with: '{{ tag }}'</h1>
+		{% for p in products %}
+			{% include 'tags/product_thumbnail.html' %}
+		{% endfor %}
+	{% endblock %}

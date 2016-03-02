@@ -1,0 +1,310 @@
+{% load staticfiles %}
+{% load catalog_tags %}
+{% load catalog_filters %}
+{% load search_tags %}
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if IE 9]>
+<html id="ie9" dir="ltr" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+{% block head %}
+<html dir="ltr" lang="en-US">
+<!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{{ site_name }} | {% block extra_title %}{% endblock %}</title>
+        <!-- {% block javascript %}{% endblock %} -->
+
+        <!-- CSS -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
+
+        <!-- Latest JQuery (IE9+) -->
+        <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/style.css' %}" />
+        <!-- <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/custom.css' %}" /> -->
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 980px)" href="{% static 'css/lessthen980.css' %}" />
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="{% static 'css/lessthen600.css' %}" />
+        <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="{% static 'css/lessthen480.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/shop.css' %}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{% static 'css/prettyPhoto.css' %}" type="text/css" media="all" />
+        <link rel="stylesheet" href="{% static 'css/tipsy.css'%}" type="text/css" media="all" />
+        <link rel='stylesheet' href="{% static 'css/jquery-rotating.css' %}" type='text/css' media='all' />
+        <link rel='stylesheet' href="{% static 'css/slider-cycle.css' %}" type='text/css' media='all' />
+        <style type="text/css">
+            #loading{
+                display:none;
+                position:fixed;
+                top:0;
+                left:45%;
+                background-color:Pink;
+                width: 200px;
+                font-size:medium;
+                color:Black;
+                font-weight:bold;
+                padding:2px;
+                border:solid 1px Red;
+                text-align: center;
+                z-index:100;
+            }
+            #noscript{
+                position:fixed;
+                top:0;left:0;
+                width:100%;
+                background-color:Red;
+                color:White;
+                font-weight:bold;
+                padding:5px;
+                text-align:center;
+            }
+            #noscript_padder{
+                height:30px;
+            }
+        </style>
+        
+        <!-- [favicon] begin -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+        <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
+        <!-- [favicon] end -->  
+        
+        <!-- FONT -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&amp;ver=3.3.2" type="text/css" media="all" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A400&amp;ver=3.3.2" type="text/css" media="all" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans&amp;ver=3.3.2" type="text/css" media="all" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster&amp;text=Sommerce+Shop&amp;ver=3.3.2" type="text/css" media="all" />
+        
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.tipsy.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.tweetable.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.nivo.slider.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.cycle.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/comment-reply.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+        
+        <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/home.css' %}" />
+
+    </head>
+{% endblock %}
+{% block body %}
+    <body class="responsive boxed-layout no_js">
+        <!-- START LIGHT WRAPPER -->
+        <div class="bgLight group">
+            <!-- START WRAPPER -->
+            <div class="wrapper group">
+                <!-- START BG WRAPPER -->
+                <div class="bgWrapper group">
+                    {% block header %}
+                        <!-- START HEADER -->
+                        <div id="header" class="group">
+                            <!-- .inner -->
+                            <div class="inner group">
+                                <!-- START LOGO -->
+                                <div id="logo" class="group">
+                                    <a href="index.html" title="Sommerce Shop"> 
+                                    <span class="logo-title">{{ site_name }}</span>
+                                    </a>         
+                                    <p class="logo-description">The perfect e-commerce solution</p>
+                                </div>
+                                <!-- END LOGO -->        
+                                <!-- START LINKSBAR -->
+                                <ul id="linksbar" class="group">
+                                    <li class="icon cart">
+                                        {% cart_box request %}
+                                    </li>
+                                    <li class="icon lock">
+                                        {% if user.is_authenticated %}
+                                            <a href="{% url "django.contrib.auth.views.logout" %}">Logout</a>
+                                        {% else %}
+                                            <a href="{% url 'register' %}">Sign Up</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'login' %}">Login</a>
+                                        {% endif %} |
+                                    </li>
+                                    <li><a href="contact.html">Contact us</a> | </li>
+                                </ul>
+                                
+                                <!-- END LINKSBAR -->  
+                                <div class="clear"></div>
+                                
+                                    <!-- START NAV -->
+                                    <div id="nav" class="group creative">
+                                       <ul id="menu-navigation" class="level-1">
+                                            <li>
+                                                <a href="index.html">Home</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="home-version-2-elegant.html">Home version 2 (elegant)</a></li>
+                                                    <li><a href="home-version-3-creative.html">Home version 3 (creative)</a></li>
+                                                    <li><a href="home-version-4.html">Home version 4</a></li>
+                                                    <li><a href="home-version-5-corporate.html">Home version 5 (corporate)</a></li>
+                                                    <li><a href="home-version-6.html">Home version 6</a></li>
+                                                    <li><a href="home-version-7.html">Home version 7</a></li>
+                                                    <li><a href="home-version-8.html">Home version 8</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="megamenu">
+                                                <a href="#">Shopping By</a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="brand.html">Brand</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#">Wallmart</a></li>
+                                                            <li><a href="#">Ikea</a></li>
+                                                            <li><a href="#">Pathio</a></li>
+                                                            <li><a href="#">Furnishop</a></li>
+                                                            <li><a href="#">Brand name</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="categories.html">Categories</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#">Kitchen</a></li>
+                                                            <li><a href="#">Bedroom</a></li>
+                                                            <li><a href="#">Garden</a></li>
+                                                            <li><a href="#">Bathroom</a></li>
+                                                            <li><a href="#">Wood</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Prices</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#">100 &#8211; 200 &euro;</a></li>
+                                                            <li><a href="#">200 &#8211; 500 &euro;</a></li>
+                                                            <li><a href="#">500 &#8211; 800 &euro;</a></li>
+                                                            <li><a href="#">800 &#8211; 1000 &euro;</a></li>
+                                                            <li><a href="#">1000 &#8211; 1200 &euro;</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'my_account' %}">My Account</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="change-password.html">Change Password</a></li>
+                                                    <li><a href="edit-address.html">Edit My Address</a></li>
+                                                    <li><a href="order-tracking.html">Track your order</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="shop.html">Shop</a></li>
+                                            <li>
+                                                <a href="blog.html">Blog</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="blog.html">Big Image</a></li>
+                                                    <li><a href="blog-small.html">Small Image</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Pages</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="testimonials.html">Testimonials</a></li>
+                                                    <li><a href="faq.html">Faq</a></li>
+                                                    <li><a href="contact.html">Get in Touch</a></li>
+                                                    
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="typography.html">Shortcode</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="typography.html">Typography</a></li>
+                                                    <li><a href="alert-box-buttons.html">Alert box &#038; buttons</a></li>
+                                                    <li><a href="icon-sections.html">Icon Sections</a></li>
+                                                    <li><a href="nivo-slider.html">Nivo Slider</a></li>
+                                                    <li><a href="media-widgets.html">Media &amp; Widgets</a></li>
+                                                    <li><a href="table-box-prices.html">Table &#038; Box prices</a></li>
+                                                    <li><a href="mix-various.html">Mix &#038; Various</a></li>
+                                                    <li><a href="shop-shortcodes.html">Shop shortcodes</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- END NAV -->
+                                    
+                                    <!-- START SEARCH FORM -->  
+                                    {% search_box request %}
+                                    <!-- <form role="search" method="get" id="searchform" action="#" class="group">
+                                    <div><label class="screen-reader-text" for="s">search</label>
+                                        <input type="text" value="" name="s" id="s" />
+                                        <input type="submit" id="searchsubmit" value="&gt;" />    
+                                        <input type="hidden" name="post_type" value="product" />
+                                    </div>
+                                    </form> -->
+                                    <!-- END SEARCH FORM -->
+                                
+                                </div>
+                                <!-- end .inner -->  
+                                 
+                        </div>
+                            <!-- END HEADER --> 
+                    {% endblock %}
+                    <div id="status"></div>
+                    <noscript>
+                        <div id="noscript">Some parts of {{ site_name }} require Javascript</div>
+                        <div id="noscript_padder"></div>
+                    </noscript>
+                    {% block body_content %}
+
+                    {% endblock %}
+    
+        <script type="text/javascript">      
+            var     yiw_slider_type = 'elegant',
+                    yiw_slider_elegant_easing = null,
+                    yiw_slider_elegant_fx = 'fade',
+                    yiw_slider_elegant_speed = 500,
+                    yiw_slider_elegant_timeout = 5000,
+                    yiw_slider_elegant_caption_speed = 500;
+        </script>
+{% endblock %}
+{% block extra %}
+{% endblock %}
+{% block footer %}
+    <div id="copyright" class="group two-columns">
+        <div class="inner group">
+        <p class="left">
+            <img src="images/logo1.png" alt="" /> 
+            <span style="padding-left:10px;">
+                <img src="{% static 'images/credit-cards/paypal.png' %}" alt="paypal" style="margin-right:8px" />
+                <img src="{% static 'images/credit-cards/visa.png' %}" alt="visa" style="margin-right:8px" />
+                <img src="{% static 'images/credit-cards/mastercard.png' %}" alt="mastercard" style="margin-right:8px" />
+                <img src="{% static 'images/credit-cards/cirrus.png' %}" alt="cirrus" style="margin-right:8px" />
+                <img src="{% static 'images/credit-cards/amex.png' %}" alt="amex" style="margin-right:8px" />
+                <img src="{% static 'images/credit-cards/bank-check.png' %}" alt="bank-check" style="margin-right:8px" />
+                <img src="{% static 'images/credit-cards/discover.png' %}" alt="discover" style="margin-right:8px" />
+            </span>                             
+        </p>
+        <p class="right">
+            Powered by <a href="http://www.yourinspirationweb.com/en"><strong>Your Inspiration Web</strong></a>  
+        </p>
+        </div>
+    </div>
+{% endblock %}        
+</div>
+    <!-- END BG WRAPPER -->           
+</div>
+        <!-- END WRAPPER -->              
+    </div>
+    <!-- END LIGHT WRAPPER --> 
+    <script type="text/javascript" src="{% static 'js/jquery.custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/contact.js' %}"></script>
+    
+</body>
+</html>
+

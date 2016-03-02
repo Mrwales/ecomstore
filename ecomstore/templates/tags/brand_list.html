@@ -1,0 +1,14 @@
+<h3>Brand</h3>
+	<ul lass="sub-menu">
+	{% with products as pdts %}
+		{% for p in pdts %}
+			<li >
+			{% ifequal c.get_absolute_url request_path %}
+				{{ p.brand }} <br/>
+			{% else %}
+				<a  class="small blue sc-button" href="{{  }}">{{ p.brand }}</a>
+			{% endifequal %}
+			</li>
+		{% endfor %}
+	{% endwith %}
+<li>
