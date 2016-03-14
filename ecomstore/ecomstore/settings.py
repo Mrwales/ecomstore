@@ -26,14 +26,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gg&4l(cl5$(nsqsbv=7d2qz0+hao&^4s7lm4qq$ubds_g3x&!3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG =True
 # Change to true before deploying into production
 ENABLE_SSL = False
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID=6
 # Application definition
 
 INSTALLED_APPS = [
@@ -68,28 +67,6 @@ AUTHNET_KEY = '9B6U5V3uJuSa3H2c'
 
 CANON_URL_HOST = 'www.fly-shoes.com'  # site to which we will redirect our users
 CANON_URLS_TO_REWRITE = ['fly-shoes.com', 'modernshoes.com']  # list of hostnames that, if detected, will be redirected to our canonical hostname
-# PAYPAL_RECEIVER_EMAIL = "wale_adesina11@yahoo.com"
-
-# STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "pk_live_CljyAKLjqlsxoYvGmOfCYOtR")
-# STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "sk_live_7NOIioSCbOYcP0paSMyFjvLB")
-# DJSTRIPE_PLANS = {
-#     "monthly": {
-#         "stripe_plan_id": "pro-monthly",
-#         "name": "Web App Pro ($25/month)",
-#         "description": "The monthly subscription plan to WebApp",
-#         "price": 2500,  # $25.00
-#         "currency": "usd",
-#         "interval": "month"
-#     },
-#     "yearly": {
-#         "stripe_plan_id": "pro-yearly",
-#         "name": "Web App Pro ($199/year)",
-#         "description": "The annual subscription plan to WebApp",
-#         "price": 19900,  # $199.00
-#         "currency": "usd",
-#         "interval": "year"
-#     }
-# }
 
 AUTH_PROFILE_MODULE = 'accounts.userprofile'
 
@@ -141,18 +118,14 @@ WSGI_APPLICATION = 'ecomstore.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-             'default': {
-                        'ENGINE': 'django.db.backends.sqlite3',
-                        'NAME': 'db.sqlite3',
-                        }
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2' ,
-#         'USER': 'root',
-#         'NAME':'walemusicstore',
-#         'PASSWORD': 'celebrate',
-#         'HOST':'127.0.0.1',
-#         'PORT':'5432',
-#     }
+           'default': {
+         'ENGINE': 'django.db.backends.postgresql_psycopg2' ,
+         'USER': 'wale',
+         'NAME':'ecomstoredb',
+         'PASSWORD': 'september20',
+	 'HOST':'127.0.0.1',
+         'PORT':'5432',
+    }
 }
 
 
