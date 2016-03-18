@@ -15,6 +15,7 @@ class CartItem(models.Model):
         return self.quantity * self.product.price
     def name(self):
         return self.product.name
+    @property
     def price(self):
         return self.product.price
     def get_absolute_url(self):
